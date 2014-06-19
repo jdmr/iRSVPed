@@ -8,7 +8,7 @@
                         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-    <context:property-placeholder location="classpath*:hyperion.properties"/>
+    <context:property-placeholder location="classpath*:irsvped.properties"/>
     
     <http pattern="/resources/**" security="none"/>
     <http pattern="/404.html" security="none"/>
@@ -38,7 +38,7 @@
         <custom-filter ref="socialAuthenticationFilter" before="PRE_AUTH_FILTER" />
     </http>
 
-    <beans:bean name="userDetailsService" class="org.davidmendoza.hyperion.service.impl.UserDetailsServiceImpl"/>
+    <beans:bean name="userDetailsService" class="org.davidmendoza.irsvped.service.impl.UserDetailsServiceImpl"/>
 
     <beans:bean name="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
     
@@ -73,7 +73,7 @@
         <beans:constructor-arg index="1" ref="socialUserDetailsService"/>
     </beans:bean>
     
-    <beans:bean id="socialUserDetailsService" class="org.davidmendoza.hyperion.service.impl.SocialUserDetailsServiceImpl" >
+    <beans:bean id="socialUserDetailsService" class="org.davidmendoza.irsvped.service.impl.SocialUserDetailsServiceImpl" >
         <beans:constructor-arg ref="userDetailsService" />
     </beans:bean>
     
